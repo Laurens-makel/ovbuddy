@@ -1,0 +1,78 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+<!-- When using one of the following commands, a rollback script is not required
+AddColumn
+AddDefaultValue
+AddForeignKeyConstraint
+AddLookupTable
+AddNotNullConstraint
+AddPrimaryKey
+AddUniqueConstraint
+CreateIndex
+CreateSequence
+CreateTable
+CreateView
+DropNotNullConstraint
+RenameColumn
+RenameTable
+RenameView
+TagDatabase
+ -->
+ 
+ <changeSet id="Testing" author="Laurens">
+	<createTable tableName="USERS">
+		<column name="UID" type="int"></column>
+	</createTable> 
+ </changeSet>
+ 
+  <changeSet id="Create LOCATIONS tabel" author="Laurens">
+	<createTable tableName="LOCATIONS">
+		<column name="ID" type="int" autoIncrement="true">
+			<constraints nullable="false"/>
+		</column>
+		<column name="NAME" type="varchar(255)">
+			<constraints nullable="false"/>
+		</column>
+		<column name="LATITUDE" type="double">
+			<constraints nullable="false"/>
+		</column>
+		<column name="LONGITUDE" type="double">
+			<constraints nullable="false"/>
+		</column>
+	</createTable> 
+ </changeSet>
+ 
+ <changeSet id="Create REIZEN tabel" author="Laurens">
+	<createTable tableName="REIZEN">
+		<column name="ID" type="int" autoIncrement="true">
+			<constraints nullable="false"/>
+		</column>
+		<column name="FROM" type="int">
+			<constraints nullable="false"/>
+		</column>
+		<column name="TO" type="int">
+			<constraints nullable="false"/>
+		</column>
+	</createTable> 
+	<addPrimaryKey tableName="REIZEN" columnNames="ID, FROM, TO"/>
+	<addForeignKeyConstraint 
+		constraintName="FK_REIZEN_TO_LOCATIONS_ID" 
+		referencedTableName="LOCATIONS" 
+		baseColumnNames="TO" 
+		baseTableName="REIZEN" 
+		referencedColumnNames="ID"
+	/>
+	<addForeignKeyConstraint 
+		constraintName="FK_REIZEN_FROM_LOCATIONS_ID" 
+		referencedTableName="LOCATIONS" 
+		baseColumnNames="FROM" 
+		baseTableName="REIZEN" 
+		referencedColumnNames="ID"
+	/>
+ </changeSet>
+
+</databaseChangeLog>
