@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import liquibase.Contexts;
 import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
 
 public class Database {
-	private static final String CHANGELOG = "DatabaseChangelog.xml";
+	private static final String CHANGELOG_LOCATION = "DatabaseChangelog.xml";
 	private Connection conn;
 	private JdbcConnection connection;
 	private Liquibase liquibase;
@@ -36,7 +37,7 @@ public class Database {
 	private void initialise() throws LiquibaseException {
 		ClassLoaderResourceAccessor resourceOpener = new ClassLoaderResourceAccessor();
 		
-		Liquibase liquibase = new Liquibase(CHANGELOG, resourceOpener, connection);
+		Liquibase liquibase = new Liquibase(CHANGELOG_LOCATION, resourceOpener, connection);
 		liquibase.validate();
 		liquibase.update(new Contexts());
 	}
