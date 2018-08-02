@@ -13,18 +13,20 @@ import java.util.List;
 
 public class Model {
 	private static List<Model> models = new ArrayList<Model>();
-	private Location location;
+	private HashMap<String, Location> locations = new HashMap<String, Location>();
 	
-	public Model() {
-		Model.models.add(this);
+	public Model(String controllerName) {
+		Model.models.put(controllerName, this);
 	}
 	
-	public void setLocation(Location location) {
-		this.location = location;
+	public void addLocation(String identifier, Location location) {
+		locations.put(identifier, location);
 	}
 	
-	public Location getLocation() {
-		return location;
+	public Location getLocation(String identifier) {
+		return locations.get(identifier);
+	}
+	
 	}
 
 }
