@@ -43,6 +43,15 @@ public class core extends Application {
 		launch(args);
 	}
 	
+	
+	/**
+		* Start
+		* 
+		* Called by JavaFX when launching succeeded
+		* 
+		* @param Stage primaryStage
+		* @return Void
+	*/
 	public void start(Stage primaryStage) {
 		window = primaryStage;
 		
