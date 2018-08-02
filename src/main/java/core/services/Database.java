@@ -26,9 +26,9 @@ public class Database {
 	private static Liquibase liquibase;
 	
 	/**
-		* Database Constructor
+		* setConnection
 		* 
-		* Initializes a new database object when jdbc connection string is provided
+		* Initializes a database when jdbc connection string is provided
 		* 
 		* @param String jdbcString
 		* @return Void
@@ -46,22 +46,6 @@ public class Database {
 		return conn;
 	}
 	
-//	/**
-//		* Database Constructor
-//		* 
-//		* Initializes a new database object when a Connection is provided
-//		* 
-//		* @param Connection c
-//		* @return Void
-//		* @exception SQLException On database errors.
-//		* @exception LiquibaseException On liquibase errors.
-//	*/
-//	
-//	public Database(Connection c) throws LiquibaseException {
-//		conn = c;
-//		connection = new JdbcConnection(conn);
-//		initialise();
-//	}
 	
 	/**
 		* initialise
