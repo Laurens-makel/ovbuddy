@@ -126,7 +126,7 @@ public abstract class Controller {
 		* Retrieves an instance of Controller according to provided controllerName
 		* 
 		* @param String controllerName
-		* @return Void
+		* @return Controller
 	*/
 	
 	public static Controller getController(String controllerName) {
