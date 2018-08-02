@@ -21,17 +21,53 @@ public class Location {
 		// TODO: Add retrieving location according to provided longitude & latitude
 	}
 	
+	
+	/**
+		* getCity
+		* 
+		* Retrieves city of location
+		* 
+		* @return String
+	*/
+	
 	public String getCity() {
 		return city;
 	}
+	
+	
+	/**
+		* getCountry
+		* 
+		* Retrieves country of location
+		* 
+		* @return String
+	*/
 	
 	public String getCountry() {
 		return country;
 	}
 	
+	
+	/**
+		* getZip
+		* 
+		* Retrieves zip of location
+		* 
+		* @return String
+	*/
+	
 	public String getZip() {
 		return zip;
 	}
+	
+	
+	/**
+		* getAddress
+		* 
+		* Retrieves address of location
+		* 
+		* @return String
+	*/
 	
 	public String getAddress() {
 		return address;
