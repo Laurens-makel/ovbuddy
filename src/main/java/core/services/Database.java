@@ -11,17 +11,47 @@ import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
 
+/** Database service
+ * Represents a database and provides methods to interact with the dataset
+ * 
+ * @author Laurens Mäkel
+ * @version 0.0.1
+ * @since 02-08-2018
+*/
+
 public class Database {
 	private static final String CHANGELOG_LOCATION = "DatabaseChangelog.xml";
 	private Connection conn;
 	private JdbcConnection connection;
 	private Liquibase liquibase;
+	
+	/**
+		* Database Constructor
+		* 
+		* Initializes a new database object when jdbc connection string is provided
+		* 
+		* @param String jdbcString
+		* @return Void
+		* @exception SQLException On database errors.
+		* @exception LiquibaseException On liquibase errors.
+	*/
 
-	public Database(String JdbcString) throws LiquibaseException, SQLException {
-		Connection conn = DriverManager.getConnection(JdbcString);
+	public Database(String jdbcString) throws LiquibaseException, SQLException {
+		conn = DriverManager.getConnection(jdbcString);
 		connection = new JdbcConnection(conn);
 		initialise();
 	}
+	
+	/**
+		* Database Constructor
+		* 
+		* Initializes a new database object when a Connection is provided
+		* 
+		* @param Connection c
+		* @return Void
+		* @exception SQLException On database errors.
+		* @exception LiquibaseException On liquibase errors.
+	*/
 	
 	public Database(Connection c) throws LiquibaseException {
 		conn = c;
@@ -29,18 +59,31 @@ public class Database {
 		initialise();
 	}
 	
-	public Database(JdbcConnection c) throws LiquibaseException {
-		connection = c;
-		initialise();
-	}
+	/**
+		* initialise
+		* 
+		* Initializes Liquibase
+		* 
+		* @return Void
+		* @exception LiquibaseException On liquibase errors.
+	*/
 	
 	private void initialise() throws LiquibaseException {
 		ClassLoaderResourceAccessor resourceOpener = new ClassLoaderResourceAccessor();
 		
-		Liquibase liquibase = new Liquibase(CHANGELOG_LOCATION, resourceOpener, connection);
+		liquibase = new Liquibase(CHANGELOG_LOCATION, resourceOpener, connection);
 		liquibase.validate();
 		liquibase.update(new Contexts());
 	}
+	
+	/**
+		* exit
+		* 
+		* Closes all connections
+		* 
+		* @return Void
+		* @exception LiquibaseException On liquibase errors.
+	*/
 	
 	public void exit() throws SQLException, DatabaseException {
 		conn.close();
