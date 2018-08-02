@@ -1,7 +1,7 @@
 package core.models;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 /** Base class model
  * Used as a base class for all models within this application
@@ -12,7 +12,7 @@ import java.util.List;
 */
 
 public class Model {
-	private static List<Model> models = new ArrayList<Model>();
+	private static HashMap<String, Model> models = new HashMap<String, Model>();
 	private HashMap<String, Location> locations = new HashMap<String, Location>();
 	
 	public Model(String controllerName) {
@@ -27,6 +27,8 @@ public class Model {
 		return locations.get(identifier);
 	}
 	
+	public static Model getModel(String controllerName) {
+		return Model.models.get(controllerName);
 	}
 
 }
