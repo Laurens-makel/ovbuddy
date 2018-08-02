@@ -1,9 +1,18 @@
 package core.controllers;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import core.models.Model;
+
+/** Base class controller
+ * Used as a base class for all controllers within this application
+ * 
+ * @author Laurens Mäkel
+ * @version 0.0.1
+ * @since 02-08-2018
+*/
 
 public abstract class Controller {
 	private static List<Controller> controllers = new ArrayList<Controller>();
@@ -15,21 +24,9 @@ public abstract class Controller {
 	
 	public void setModel(Model model) {
 		dataModel = model;
-		
-		initModel(); // Automatically init 
-	}
-	
-	public void setModel(Model model, Boolean cancelInit) {
-		dataModel = model;
-		
-		if(!cancelInit)
-			initModel(); // Automatically init
 	}
 	
 	public Model getModel() {
 		return dataModel;
 	}
-	
-	protected abstract void initModel();
-
 }
