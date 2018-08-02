@@ -75,19 +75,4 @@ public class Database {
 		liquibase.validate();
 		liquibase.update(new Contexts());
 	}
-	
-	/**
-		* exit
-		* 
-		* Closes all connections
-		* 
-		* @return Void
-		* @exception LiquibaseException On liquibase errors.
-	*/
-	
-	public void exit() throws SQLException, DatabaseException {
-		conn.close();
-		connection.close();
-	}
-
 }

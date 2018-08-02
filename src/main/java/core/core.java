@@ -46,14 +46,6 @@ public class core extends Application {
 	public void start(Stage primaryStage) {
 		window = primaryStage;
 		
-		window.setOnCloseRequest(e -> {
-			try {
-				stop();
-			} catch (SQLException | DatabaseException err) {
-				System.out.println("An error occured while closing the database connection");
-				err.printStackTrace();
-			}
-		});
 	}
 	
 	/**
@@ -66,7 +58,7 @@ public class core extends Application {
 	*/
 	
 	public void stop() throws SQLException, DatabaseException {
-		database.exit();
+		System.out.println("Shutting down..");
 		Platform.exit();
 	}
 }
