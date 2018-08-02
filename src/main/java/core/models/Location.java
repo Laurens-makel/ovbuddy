@@ -17,6 +17,26 @@ public class Location {
 		// TODO: Add retrieving current location
 	}
 	
+	public Location(int longitude, int latitude) {
+		// TODO: Add retrieving location according to provided longitude & latitude
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	
+	public String getCountry() {
+		return country;
+	}
+	
+	public String getZip() {
+		return zip;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
 	public String toString() {
 		return "This location is ["+city+"] in ["+country+"] with the address ["+address+"] and zip ["+zip+"]";
 	}
