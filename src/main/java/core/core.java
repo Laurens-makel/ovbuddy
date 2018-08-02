@@ -1,13 +1,18 @@
 package core;
 
+import java.io.IOException;
 import java.sql.*;
 
+import core.controllers.Home;
 import core.services.Database;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import liquibase.exception.DatabaseException;
@@ -28,6 +33,7 @@ public class core extends Application {
 	private static final String JDBC_STRING = "jdbc:h2:~/database/hDOS2";
 	private static final String APP_TITLE = "ovBuddy";
 	private Stage window;
+	private Home home = new Home();
 	
 	/**
 		* This is the main method which starts all services and launches GUI
@@ -51,11 +57,19 @@ public class core extends Application {
 		* 
 		* @param Stage primaryStage
 		* @return Void
+	 * @throws IOException 
 	*/
-	public void start(Stage primaryStage) {
+	
+	public void start(Stage primaryStage) throws IOException {
 		window = primaryStage;
 		
+		Parent root = FXMLLoader.load(getClass().getResource("/views/Home.fxml") );
+		home.setWindow(window);
+		home.setTitle(APP_TITLE);
+		home.setScene(new Scene(root));
+		home.show();
 	}
+	
 	
 	/**
 		* stop

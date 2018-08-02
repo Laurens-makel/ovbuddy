@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane fx:controller="core.controllers.Home" prefHeight="325" prefWidth="520" xmlns:fx="http://javafx.com/fxml/1">
+	<left>
+		<VBox fx:id="sideBox">
+			<Button fx:id="Plan" text="Plan"></Button>
+			<Button fx:id="Saved" text="Saved"></Button>
+		</VBox>
+	</left>
+	
+	<center>
+		
+	</center>
+</BorderPane>
+
