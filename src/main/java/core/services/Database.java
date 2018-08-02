@@ -41,8 +41,9 @@ public class Database {
 		liquibase.update(new Contexts());
 	}
 	
-	public void exit() throws SQLException {
+	public void exit() throws SQLException, DatabaseException {
 		conn.close();
+		connection.close();
 	}
 
 }
