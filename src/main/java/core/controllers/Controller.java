@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.models.Model;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 /** Base class controller
  * Used as a base class for all controllers within this application
@@ -17,6 +19,9 @@ import core.models.Model;
 public abstract class Controller {
 	private static List<Controller> controllers = new ArrayList<Controller>();
 	protected Model model = new Model();
+	protected Stage window;
+	protected Scene scene;
+	protected String title;
 	
 	public Controller() {
 		controllers.add(this);
@@ -29,5 +34,22 @@ public abstract class Controller {
 	public Model getModel() {
 		return model;
 	}
+
+	public void setWindow(Stage window) {
+		this.window = window;
+	}
+	
+	public void setScene(Scene scene) {
+		this.scene = scene;
+		window.setScene(this.scene);
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+		window.setTitle(title);
+	}
+	
+	public void show() {
+		window.show();
 	}
 }
