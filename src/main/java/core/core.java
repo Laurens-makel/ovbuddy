@@ -2,22 +2,21 @@ package core;
 
 import java.sql.*;
 
-import liquibase.Contexts;
-import liquibase.Liquibase;
-import liquibase.database.jvm.JdbcConnection;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import liquibase.exception.LiquibaseException;
-import liquibase.resource.ClassLoaderResourceAccessor;
 
-public class core {
-
+public class core extends Application {
+	private Stage window;
+	
 	public static void main(String[] args) throws SQLException, LiquibaseException {
-		Connection conn = DriverManager.getConnection("jdbc:h2:~/database/hDOS2");
-		
-		ClassLoaderResourceAccessor resourceOpener = new ClassLoaderResourceAccessor();
-		Liquibase liquibase = new Liquibase("DatabaseChangelog.xml", resourceOpener, new JdbcConnection(conn));
-		liquibase.validate();
-		liquibase.update(new Contexts());
-		conn.close();
+		launch(args);
 	}
-
+	
+	public void start(Stage primaryStage) {
+		window = primaryStage;
+	}
 }
