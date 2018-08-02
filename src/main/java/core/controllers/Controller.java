@@ -18,6 +18,8 @@ import javafx.scene.Scene;
 
 public abstract class Controller {
 	private static HashMap<String, Controller> controllers = new HashMap<String, Controller>();
+	protected static int HEIGHT = 300;
+	protected static int WIDTH = 600;
 	protected Model model;
 	protected Stage window;
 	protected Scene scene;
