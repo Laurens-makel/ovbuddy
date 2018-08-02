@@ -25,40 +25,121 @@ public abstract class Controller {
 	protected Scene scene;
 	protected String title;
 	
+	/**
+		* Controller
+		* 
+		* Registers new controller with provided controllerName
+		* Instantiates a new model and attaches it to the instance of Controller
+		* 
+		* @param Model model
+		* @return Void
+	*/
+	
 	public Controller(String controllerName) {
 		controllers.put(controllerName, this);
 		setModel( new Model(controllerName) );
 	}
 	
+	/**
+		* setModel
+		* 
+		* Sets the model for instance of Controller
+		* 
+		* @param Model model
+		* @return Void
+	*/
+	
 	public void setModel(Model model) {
 		this.model = model;
 	}
 	
+	/**
+		* setModel
+		* 
+		* Retrieves the model for instance of Controller
+		* 
+		* @param Model model
+		* @return Model
+	*/
+	
 	public Model getModel() {
 		return model;
 	}
+	
+	/**
+		* setWindow
+		* 
+		* Sets the window for instance of Controller
+		* 
+		* @param Stage window
+		* @return Void
+	*/
 
 	public void setWindow(Stage window) {
 		this.window = window;
 	}
+	
+	/**
+		* setWindow
+		* 
+		* Sets the scene for instance of Controller
+		* 
+		* @param Scene scene
+		* @return Void
+	*/
 	
 	public void setScene(Scene scene) {
 		this.scene = scene;
 		window.setScene(this.scene);
 	}
 	
+	/**
+		* setTitle
+		* 
+		* Sets the title for instance of Controller
+		* Attaches title to window attached to instance of Controller
+		* 
+		* @param String title
+		* @return Void
+	*/
+	
 	public void setTitle(String title) {
 		this.title = title;
 		window.setTitle(title);
 	}
 	
+	/**
+		* show
+		* 
+		* Shows the scene attached to the window attached to instance of Controller
+		* 
+		* @return Void
+	*/
+	
 	public void show() {
 		window.show();
 	}
 	
+	/**
+		* getController
+		* 
+		* Retrieves an instance of Controller according to provided controllerName
+		* 
+		* @param String controllerName
+		* @return Void
+	*/
+	
 	public static Controller getController(String controllerName) {
 		return Controller.controllers.get(controllerName);
 	}
+	
+	/**
+		* createScene
+		* 
+		* Each instance of Controller should implement a method which is responsible for creating a view
+		* 
+		* @return Void
+	*/
 	
 	public abstract void createScene();
 }
