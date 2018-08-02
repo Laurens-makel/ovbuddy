@@ -26,6 +26,7 @@ import liquibase.exception.LiquibaseException;
 
 public class core extends Application {
 	private static final String JDBC_STRING = "jdbc:h2:~/database/hDOS2";
+	private static final String APP_TITLE = "ovBuddy";
 	private Stage window;
 	
 	/**
