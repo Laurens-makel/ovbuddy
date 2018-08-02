@@ -16,17 +16,18 @@ import core.models.Model;
 
 public abstract class Controller {
 	private static List<Controller> controllers = new ArrayList<Controller>();
-	protected Model dataModel;
+	protected Model model = new Model();
 	
 	public Controller() {
 		controllers.add(this);
 	}
 	
 	public void setModel(Model model) {
-		dataModel = model;
+		this.model = model;
 	}
 	
 	public Model getModel() {
-		return dataModel;
+		return model;
+	}
 	}
 }
