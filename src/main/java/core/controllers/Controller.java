@@ -141,5 +141,5 @@ public abstract class Controller {
 		* @return Void
 	*/
 	
-	public abstract void createScene();
+//	public abstract void createScene();
 }
