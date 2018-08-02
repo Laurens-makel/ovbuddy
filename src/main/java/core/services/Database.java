@@ -28,7 +28,7 @@ public class Database {
 	/**
 		* setConnection
 		* 
-		* Initializes a database when jdbc connection string is provided
+		* Initializes a connection when jdbc connection string is provided
 		* 
 		* @param String jdbcString
 		* @return Void
@@ -39,16 +39,16 @@ public class Database {
 	public static void setConnection(String jdbcString) throws LiquibaseException, SQLException {
 		conn = DriverManager.getConnection(jdbcString);
 		connection = new JdbcConnection(conn);
-		initialise();
+		runLiquibase();
 	}
 	
-	public static synchronized Connection getInstance(){
+	public static Connection getInstance(){
 		return conn;
 	}
 	
 	
 	/**
-		* initialise
+		* runLiquibase
 		* 
 		* Initializes Liquibase
 		* 
@@ -56,7 +56,7 @@ public class Database {
 		* @exception LiquibaseException On liquibase errors.
 	*/
 	
-	private static void initialise() throws LiquibaseException {
+	private static void runLiquibase() throws LiquibaseException {
 		ClassLoaderResourceAccessor resourceOpener = new ClassLoaderResourceAccessor();
 		
 		liquibase = new Liquibase(CHANGELOG_LOCATION, resourceOpener, connection);
