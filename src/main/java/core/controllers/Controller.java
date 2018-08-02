@@ -59,4 +59,6 @@ public abstract class Controller {
 	public static Controller getController(String controllerName) {
 		return Controller.controllers.get(controllerName);
 	}
+	
+	public abstract void createScene();
 }
