@@ -1,7 +1,7 @@
 package core.controllers;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 
 import core.models.Model;
@@ -17,14 +17,15 @@ import javafx.scene.Scene;
 */
 
 public abstract class Controller {
-	private static List<Controller> controllers = new ArrayList<Controller>();
-	protected Model model = new Model();
+	private static HashMap<String, Controller> controllers = new HashMap<String, Controller>();
+	protected Model model;
 	protected Stage window;
 	protected Scene scene;
 	protected String title;
 	
-	public Controller() {
-		controllers.add(this);
+	public Controller(String controllerName) {
+		controllers.put(controllerName, this);
+		setModel( new Model(controllerName) );
 	}
 	
 	public void setModel(Model model) {
@@ -51,5 +52,9 @@ public abstract class Controller {
 	
 	public void show() {
 		window.show();
+	}
+	
+	public static Controller getController(String controllerName) {
+		return Controller.controllers.get(controllerName);
 	}
 }
