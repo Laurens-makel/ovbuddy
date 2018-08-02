@@ -21,9 +21,9 @@ import liquibase.resource.ClassLoaderResourceAccessor;
 
 public class Database {
 	private static final String CHANGELOG_LOCATION = "DatabaseChangelog.xml";
-	private Connection conn;
-	private JdbcConnection connection;
-	private Liquibase liquibase;
+	private static Connection conn;
+	private static JdbcConnection connection;
+	private static Liquibase liquibase;
 	
 	/**
 		* Database Constructor
@@ -36,28 +36,32 @@ public class Database {
 		* @exception LiquibaseException On liquibase errors.
 	*/
 
-	public Database(String jdbcString) throws LiquibaseException, SQLException {
+	public static void setConnection(String jdbcString) throws LiquibaseException, SQLException {
 		conn = DriverManager.getConnection(jdbcString);
 		connection = new JdbcConnection(conn);
 		initialise();
 	}
 	
-	/**
-		* Database Constructor
-		* 
-		* Initializes a new database object when a Connection is provided
-		* 
-		* @param Connection c
-		* @return Void
-		* @exception SQLException On database errors.
-		* @exception LiquibaseException On liquibase errors.
-	*/
-	
-	public Database(Connection c) throws LiquibaseException {
-		conn = c;
-		connection = new JdbcConnection(conn);
-		initialise();
+	public static synchronized Connection getInstance(){
+		return conn;
 	}
+	
+//	/**
+//		* Database Constructor
+//		* 
+//		* Initializes a new database object when a Connection is provided
+//		* 
+//		* @param Connection c
+//		* @return Void
+//		* @exception SQLException On database errors.
+//		* @exception LiquibaseException On liquibase errors.
+//	*/
+//	
+//	public Database(Connection c) throws LiquibaseException {
+//		conn = c;
+//		connection = new JdbcConnection(conn);
+//		initialise();
+//	}
 	
 	/**
 		* initialise
@@ -68,7 +72,7 @@ public class Database {
 		* @exception LiquibaseException On liquibase errors.
 	*/
 	
-	private void initialise() throws LiquibaseException {
+	private static void initialise() throws LiquibaseException {
 		ClassLoaderResourceAccessor resourceOpener = new ClassLoaderResourceAccessor();
 		
 		liquibase = new Liquibase(CHANGELOG_LOCATION, resourceOpener, connection);

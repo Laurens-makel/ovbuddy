@@ -26,7 +26,6 @@ import liquibase.exception.LiquibaseException;
 
 public class core extends Application {
 	private static final String JDBC_STRING = "jdbc:h2:~/database/hDOS2";
-	private static Database database;
 	private Stage window;
 	
 	/**
@@ -39,7 +38,7 @@ public class core extends Application {
 	*/
 	
 	public static void main(String[] args) throws SQLException, LiquibaseException {
-		database = new Database(JDBC_STRING);
+		Database.setConnection(JDBC_STRING);
 		launch(args);
 	}
 	
