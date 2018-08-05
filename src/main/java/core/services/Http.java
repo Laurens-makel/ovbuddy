@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -30,9 +31,35 @@ public class Http {
 	    
 		return jsonResult;
 	}
+	
+	public static JSONArray getJsonArray(URL providedUrl) throws IOException, ParseException {
+	    HttpURLConnection conn = (HttpURLConnection) providedUrl.openConnection();
+	    conn.setRequestMethod("GET");
+	    
+	    String result = "";
+	    BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	    String line;
+	    while ((line = rd.readLine()) != null) {
+	    	result += line;
+	    }
+	    rd.close();
+      	
+	    JSONParser jsonParser = new JSONParser();
+	    JSONArray jsonResult = (JSONArray) jsonParser.parse(result);
+	    
+		return jsonResult;
+	}
 
 	public static JSONObject getJson(String providedUrl) throws IOException, ParseException{
+		System.out.println(providedUrl);
 		URL url = new URL(providedUrl); // Turn string into URL
 		return getJson(url);
 	}
+	
+	public static JSONArray getJsonArray(String providedUrl) throws IOException, ParseException{
+		System.out.println(providedUrl);
+		URL url = new URL(providedUrl); // Turn string into URL
+		return getJsonArray(url);
+	}
+
 }
