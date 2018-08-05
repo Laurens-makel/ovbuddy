@@ -20,10 +20,10 @@ public abstract class Controller {
 	private static HashMap<String, Controller> controllers = new HashMap<String, Controller>();
 	protected static int HEIGHT = 300;
 	protected static int WIDTH = 600;
-	protected Model model;
-	protected Stage window;
-	protected Scene scene;
-	protected String title;
+	protected static Model model;
+	protected static Stage window;
+	protected static Scene scene;
+	protected static String title;
 	
 	/**
 		* Controller
@@ -49,8 +49,8 @@ public abstract class Controller {
 		* @return Void
 	*/
 	
-	public void setModel(Model model) {
-		this.model = model;
+	public static void setModel(Model model) {
+		Controller.model = model;
 	}
 	
 	/**
@@ -62,8 +62,8 @@ public abstract class Controller {
 		* @return Model
 	*/
 	
-	public Model getModel() {
-		return model;
+	public static Model getModel() {
+		return Controller.model;
 	}
 	
 	/**
@@ -75,8 +75,8 @@ public abstract class Controller {
 		* @return Void
 	*/
 
-	public void setWindow(Stage window) {
-		this.window = window;
+	public static void setWindow(Stage window) {
+		Controller.window = window;
 	}
 	
 	/**
@@ -88,9 +88,9 @@ public abstract class Controller {
 		* @return Void
 	*/
 	
-	public void setScene(Scene scene) {
-		this.scene = scene;
-		window.setScene(this.scene);
+	public static void setScene(Scene scene) {
+		Controller.scene = scene;
+		Controller.getWindow().setScene(scene);
 	}
 	
 	/**
@@ -103,9 +103,9 @@ public abstract class Controller {
 		* @return Void
 	*/
 	
-	public void setTitle(String title) {
-		this.title = title;
-		window.setTitle(title);
+	public static void setTitle(String title) {
+		Controller.title = title;
+		Controller.getWindow().setTitle(title);
 	}
 	
 	/**
@@ -116,8 +116,12 @@ public abstract class Controller {
 		* @return Void
 	*/
 	
-	public void show() {
-		window.show();
+	public static void show() {
+		Controller.getWindow().show();
+	}
+	
+	public static Stage getWindow() {
+		return Controller.window;
 	}
 	
 	/**

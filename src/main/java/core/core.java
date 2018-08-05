@@ -3,6 +3,7 @@ package core;
 import java.io.IOException;
 import java.sql.*;
 
+import core.controllers.Controller;
 import core.controllers.Home;
 import core.services.Database;
 
@@ -33,7 +34,6 @@ public class core extends Application {
 	private static final String JDBC_STRING = "jdbc:h2:~/database/hDOS2";
 	private static final String APP_TITLE = "ovBuddy";
 	private Stage window;
-	private Home home = new Home();
 	
 	/**
 		* This is the main method which starts all services and launches GUI
@@ -64,10 +64,10 @@ public class core extends Application {
 		window = primaryStage;
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/views/Home.fxml") );
-		home.setWindow(window);
-		home.setTitle(APP_TITLE);
-		home.setScene(new Scene(root));
-		home.show();
+		Controller.setWindow(window);
+		Controller.setTitle(APP_TITLE);
+		Controller.setScene(new Scene(root));
+		Controller.show();
 	}
 	
 	
