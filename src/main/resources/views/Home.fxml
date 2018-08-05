@@ -1,20 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane fx:controller="core.controllers.Home" prefHeight="325" prefWidth="520" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="325" prefWidth="497.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controllers.Home">
 	<left>
-		<VBox fx:id="sideBox">
-			<Button fx:id="Plan" text="Plan"></Button>
-			<Button fx:id="Saved" text="Saved"></Button>
+		<VBox fx:id="sideBox" prefHeight="325.0" prefWidth="71.0" style="-fx-background-color: #e2e2e2;">
+   <children>
+   			<Button fx:id="plan" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #f9f9f9;" text="Plan" textFill="#6b6b6b">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="saved" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #e2e2e2;" text="Saved" textFill="#6b6b6b">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Button>
+   </children>
 		</VBox>
 	</left>
-	
-	<center>
-		
-	</center>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Department" textFill="#6b6b6b">
+               <VBox.margin>
+                  <Insets left="50.0" top="60.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="from" promptText="From">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </TextField>
+            <Label text="Destination" textFill="#6b6b6b">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="to" promptText="To">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="search" mnemonicParsing="false" onAction="#handleSearch" style="-fx-background-color: #e2e2e2;" text="Search" textFill="#6b6b6b">
+               <VBox.margin>
+                  <Insets left="315.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
-
